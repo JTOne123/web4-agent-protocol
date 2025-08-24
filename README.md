@@ -21,10 +21,10 @@ This transforms AI Agents from simple information retrievers into powerful perso
 ### Key Sections
 
 *   **Core Concepts**
-    *   [1. Architecture Overview](docs/Architecture_Overview.md)
-    *   [2. Pillar 1: MCP Gateway & Definition](docs/Pillar_1_MCP_Gateway_and_Definition.md)
-    *   [3. Pillar 2: Decentralized Authorization](docs/Pillar_2_Decentralized_Authorization.md)
-    *   [4. Pillar 3: Native Microtransactions](docs/Pillar_3_Native_Microtransactions.md)
+    *   [1. Architecture Overview](/docs/Architecture_Overview.md)
+    *   [2. Pillar 1: MCP Gateway & Definition](/docs/Pillar_1_MCP_Gateway_and_Definition.md)
+    *   [3. Pillar 2: Decentralized Authorization](/docs/Pillar_2_Decentralized_Authorization.md)
+    *   [4. Pillar 3: Native Microtransactions](/docs/Pillar_3_Native_Microtransactions.md)
 *   **Developer Guides**
-    *   [5. Implementation Guide: MCP Server](docs/Implementation_Guide_MCP_Server.md)
-    *   [6. Full Example: Definition File](docs/Full_Example_Definition_File.md)
+    *   [5. Implementation Guide: MCP Server](/docs/Implementation_Guide_MCP_Server.md)
+    *   [6. Full Example: Definition File](/docs/Full_Example_Definition_File.md)

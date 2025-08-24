@@ -19,6 +19,6 @@ To maximize ease of integration, **Publishers will not need to create this file 
 
 Because the specification is based on the OpenAPI 3.0 industry standard, companies that already have a REST API are very likely to also have a description of it in Swagger (OpenAPI 2.0) or OpenAPI 3.0 format. The integration process is reduced to **adapting the existing file**: adding the custom fields `x-mcp-target` for routing and `x-mcp-monetization` for payment rules. Existing tools can be used to automatically convert legacy Swagger 2.0 files to the OpenAPI 3.0 format.
 
-> **Next:** See the [Implementation Guide](docs/Implementation_Guide_MCP_Server.md) for a practical example of building this gateway.
+> **Next:** See the [Implementation Guide](/docs/Implementation_Guide_MCP_Server.md) for a practical example of building this gateway.
 >
-> **Next:** See the [Full Example Definition File](docs/Full_Example_Definition_File.md) for a complete example.
+> **Next:** See the [Full Example Definition File](/docs/Full_Example_Definition_File.md) for a complete example.
