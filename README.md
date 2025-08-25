@@ -16,6 +16,8 @@ The Web4 Agent Protocol integrates with the existing web rather than replacing i
 
 This transforms AI Agents from simple information retrievers into powerful personal assistants. A user can now not only _ask_ about flights but also _book_ them, not just read a review but also _buy_ the product—all through a single, secure, conversational interface.
 
+Search engines like Google and Bing can index the public [web4 agent definition file](/docs/Full_Example_Definition_File.md), allowing them to act as an `mcp-client` on the user's behalf. This enables direct interaction with websites through a chatbot or from the search results page.
+
 Envisioned as an evolution—akin to MCP 2.0—for seamless daily web interactions, the protocol will integrate authentication and payment capabilities into the agent's core. This creates a unified experience where the agent securely manages user identity and transactions across services, becoming a trusted assistant for the user's entire web presence.
 
 ### Benefits of the Web4 Agent Protocol

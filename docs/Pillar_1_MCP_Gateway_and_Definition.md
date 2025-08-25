@@ -10,7 +10,7 @@ The core idea is that Publishers do not need to rewrite their existing business 
 
 This file is the "brain" of the MCP gateway.
 
-- **Location:** It must be publicly accessible at a standardized path: `/.well-known/mcp/mcp.api.definition.json`. This allows any `mcp-client` to discover it predictably.
+- **Location:** It must be publicly accessible at a standardized path: `/.well-known/mcp/mcp.api.definition.json`. This allows any `mcp-client` to discover it predictably. Crucially, this public, standardized path also enables search engines (like Google and Bing) to index the API, allowing them to act as a user's `mcp-client` to interact with the website directly.
 - **Content:** The file is an **OpenAPI 3.0+** specification, extended with a few custom fields:
   - `x-mcp-target`: Specifies the internal API path to which a validated request should be proxied.
   - `x-mcp-monetization`: A structured object that defines the payment and monetization rules for an endpoint.
