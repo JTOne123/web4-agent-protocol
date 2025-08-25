@@ -2,14 +2,16 @@
 
 This pillar forms the economic engine of the protocol. It introduces a decentralized monetization system based on smart contracts that supports various scenarios. This gives Publishers flexible tools to generate revenue while giving users a transparent choice in how they exchange value for services—either with funds or with their attention.
 
+Leveraging blockchain technology transcends traditional financial barriers. It is not bound by any single country's banking infrastructure or regulations, making it feasible for creators anywhere on the planet to monetize their work and receive fair compensation. The timing is particularly opportune as many countries are beginning to legally adopt stablecoins, providing a stable medium of exchange for these global transactions.
+
 ### Smart Contract-Based Infrastructure
 
 The entire financial logic is built on smart contracts to ensure transparency, security, and ease of integration.
 
-*   **Contract Factory:** A "factory" for easily creating personal smart contracts for Publishers and Advertisers.
-*   **`Publisher Escrow Contract`:** The Publisher's personal contract for securely receiving payments.
-*   **`Advertiser Vault Contract`:** An Advertiser's personal vault contract holding their ad budget.
-*   **Ad Network Orchestrator:** A decentralized service that acts as a trusted intermediary, managing the ad-based monetization flow.
+- **Contract Factory:** A "factory" for easily creating personal smart contracts for Publishers and Advertisers.
+- **`Publisher Escrow Contract`:** The Publisher's personal contract for securely receiving payments.
+- **`Advertiser Vault Contract`:** An Advertiser's personal vault contract holding their ad budget.
+- **Ad Network Orchestrator:** A decentralized service that acts as a trusted intermediary, managing the ad-based monetization flow.
 
 ### Model A: Direct Payment with Proof-of-Purchase
 

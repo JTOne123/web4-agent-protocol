@@ -5,6 +5,7 @@ This file is the declarative "brain" of an `mcp-server`. It tells the gateway wh
 Below is a complete example for a hypothetical news site, `news-portal.com`, demonstrating all key concepts of the Web4 Agent Protocol.
 
 ### `spec/mcp.api.definition.json`
+
 ```json
 {
   "openapi": "3.0.1",
@@ -20,9 +21,14 @@ Below is a complete example for a hypothetical news site, `news-portal.com`, dem
         "summary": "Get a full article (requires payment or rewarded ad)",
         "operationId": "getFullArticle",
         "parameters": [
-          { "name": "articleId", "in": "path", "required": true, "schema": { "type": "string" } }
+          {
+            "name": "articleId",
+            "in": "path",
+            "required": true,
+            "schema": { "type": "string" }
+          }
         ],
-        "responses": { 
+        "responses": {
           "200": { "description": "The full text of the article" },
           "402": { "description": "Payment Required" }
         },
@@ -44,10 +50,12 @@ Below is a complete example for a hypothetical news site, `news-portal.com`, dem
       }
     },
     "/articles/{articleId}/quote": {
-       "post": {
+      "post": {
         "summary": "Get an invoice to pay for a full article",
         "operationId": "getArticleQuote",
-        "responses": { "200": { "description": "Invoice for payment, valid for 5 minutes" }},
+        "responses": {
+          "200": { "description": "Invoice for payment, valid for 5 minutes" }
+        },
         "x-mcp-target": "/internal/api/payments/invoice"
       }
     },
