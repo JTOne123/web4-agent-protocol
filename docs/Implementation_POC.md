@@ -1,4 +1,4 @@
-# Proof-of-Concept (POC) Implementations
+# Implementation (Proof-of-Concepts [POC])
 
 This document outlines the structure for various proof-of-concept implementations related to the Web4 Agent protocol. The source code for these POCs are located in the `/src` directory of this project.
 
