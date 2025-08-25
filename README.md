@@ -20,6 +20,8 @@ Search engines like Google and Bing can index the public [web4 agent definition 
 
 Envisioned as an evolution—akin to MCP 2.0—for seamless daily web interactions, the protocol will integrate authentication and payment capabilities into the agent's core. This creates a unified experience where the agent securely manages user identity and transactions across services, becoming a trusted assistant for the user's entire web presence.
 
+![web4-agent-protocol-logo](/docs/images/web4-agent-protocol-wide-logo.png)
+
 ### Benefits of the Web4 Agent Protocol
 
 - **For Users:** Enjoy a seamless, unified experience. Buy products, book services, and access content from any website through your AI Agent, all while using your existing website accounts securely.
