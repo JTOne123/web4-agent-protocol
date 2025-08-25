@@ -1,5 +1,7 @@
 # Welcome to the Web4 Agent Protocol Wiki
 
+> Universal REST API MCP with built-in authentication and payments
+
 # !!! DRAFT !!! TBD
 
 **The Web4 Agent Protocol redefines the user-web interface.** It is a forward-looking, open standard designed to create a new, symbiotic relationship between users, their AI Agents (powered by LLMs), and the open web.
