@@ -1,10 +1,10 @@
-# 6. Full Example: `mcp.api.definition.json`
+# 6. Full Example: `mcp-api-definition`
 
 This file is the declarative "brain" of an `mcp-server`. It tells the gateway what endpoints to expose, how to validate them, how to secure them, where to forward them, and how to monetize them.
 
 Below is a complete example for a hypothetical news site, `news-portal.com`, demonstrating all key concepts of the Web4 Agent Protocol.
 
-### `spec/mcp.api.definition.json`
+### `spec/mcp-api-definition`
 
 ```json
 {

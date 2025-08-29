@@ -21,6 +21,6 @@ This flow is secure because the user's credentials are never exposed to the `mcp
 
 ### Integration into the Gateway
 
-The `mcp-server` (gateway) enforces this security. In the `mcp.api.definition.json` file, protected endpoints are marked with a `security` requirement. The gateway uses this information to automatically apply a middleware that validates the access token on every incoming request for that endpoint, rejecting any that are unauthorized.
+The `mcp-server` (gateway) enforces this security. In the `mcp-api-definition` file, protected endpoints are marked with a `security` requirement. The gateway uses this information to automatically apply a middleware that validates the access token on every incoming request for that endpoint, rejecting any that are unauthorized.
 
 > **Next:** See the [Implementation (Proof of Concepts)](/docs/Implementation_POC.md) for a code example of how this security is enforced.

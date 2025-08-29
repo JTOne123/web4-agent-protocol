@@ -21,11 +21,11 @@ The proposed source code is organized into the following structure under the `/s
 
 ## 1. POC: `test-web4-mcp-client`
 
-A simple client demonstrating how to interact with a Web4 MCP-enabled server.
+A simple client demonstrating how to discover and interact with a Web4 MCP-enabled server. A practical initial implementation could be a browser extension. This extension would detect if a visited website exposes a definition file and, if so, provide an interface to initiate interaction. This approach allows for immediate utility while waiting for broader adoption by search engines and chatbots.
 
 ### Features:
 
-- **Definition File Support:** Parses a `mcp.api.definition.json` file to understand available API endpoints, authentication requirements, and pricing.
+- **Definition File Support:** Parses a `mcp-api-definition` file to understand available API endpoints, authentication requirements, and pricing.
 - **Authentication:** Handles authentication flows (e.g., obtaining and using JWTs) to access protected endpoints.
 - **On-Chain Payments:** Integrates with a wallet to sign and send on-chain payment transactions as required by the API before making the actual API call.
 
@@ -37,7 +37,7 @@ An example of an intelligent gateway server that sits in front of an existing RE
 
 ### Features:
 
-- **Dynamic Routing:** Uses a `mcp.api.definition.json` file to configure routing, validation, and pricing.
+- **Dynamic Routing:** Uses a `mcp-api-definition` file to configure routing, validation, and pricing.
 - **Auth Validation:** Validates incoming requests and authentication tokens (JWTs).
 - **Payment Verification:** Verifies on-chain payments before proxying requests to the internal API.
 
@@ -66,7 +66,7 @@ Source code for the smart contracts required for on-chain payments and other pot
 
 ## 5. POC: Definition File
 
-Examples of `mcp.api.definition.json` files. This file is the "brain" of an MCP server, defining its capabilities, pricing, and security requirements. See a [full example here](./Full_Example_Definition_File.md).
+Examples of `mcp-api-definition` files. This file is the "brain" of an MCP server, defining its capabilities, pricing, and security requirements. See a [full example here](./Full_Example_Definition_File.md).
 
 ### Features:
 
@@ -74,4 +74,5 @@ Examples of `mcp.api.definition.json` files. This file is the "brain" of an MCP 
 - **Pricing & Payment:** Specifies the cost for calling an endpoint and the on-chain address for payment.
 - **Security Schemes:** Declares the required authentication methods (e.g., OAuth2 Bearer token).
 
+**Location:** `/src/definition-files/`
 **Location:** `/src/definition-files/`
