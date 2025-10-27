@@ -1,0 +1,22 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "description": "<your description here>",
+  "name": "io.github.<your GitHub username here>/<your repo name>",
+  "version": "0.1.0-beta",
+  "packages": [
+    {
+      "registryType": "nuget",
+      "identifier": "web4-agent-protocol.any-rest-api-mcp",
+      "version": "0.1.0-beta",
+      "transport": {
+        "type": "stdio"
+      },
+      "packageArguments": [],
+      "environmentVariables": []
+    }
+  ],
+    "repository": {
+        "url": "https://github.com/JTOne123/web4-agent-protocol",
+        "source": "github"
+    }
+}
