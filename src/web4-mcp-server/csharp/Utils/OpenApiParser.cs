@@ -46,7 +46,9 @@ namespace Utils
                                 var pDesc = p.TryGetProperty("description", out var pdEl) ? pdEl.GetString() ?? name : name;
                                 var type = p.TryGetProperty("schema", out var sEl) && sEl.TryGetProperty("type", out var tEl)
                                     ? tEl.GetString() ?? "string" : "string";
-                                parameters.Add(new OpenApiParameter(name, pDesc, type));
+                                var pIn = p.TryGetProperty("in", out var inEl) ? inEl.GetString() ?? "query" : "query";
+                                var required = p.TryGetProperty("required", out var reqEl) && reqEl.ValueKind == JsonValueKind.True;
+                                parameters.Add(new OpenApiParameter(name, pDesc, type, pIn, required));
                             }
                         }
 

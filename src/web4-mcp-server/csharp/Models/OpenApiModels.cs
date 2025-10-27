@@ -16,5 +16,7 @@ namespace AnyRestAPIMCPServer.Models
 	internal sealed record OpenApiParameter(
 		string Name,
 		string Description,
-		string Type);
+		string Type,
+		string In,
+		bool Required);
 }

@@ -1,4 +1,5 @@
 ﻿using AnyRestAPIMCPServer.AIFunction;
+using AnyRestAPIMCPServer.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Utils;
 
@@ -13,12 +14,16 @@ namespace AnyRestAPIMCPServer.Extentaions
 				var http = new HttpClient();
 				var json = http.GetStringAsync(swaggerEndpoint).GetAwaiter().GetResult();
 				var doc = OpenApiParser.Parse(json);
-				var dynamicFn = new WebApiAIFunction(doc);
-				builder.Services.AddSingleton(_ => ModelContextProtocol.Server.McpServerTool.Create(dynamicFn));
+
+				foreach (var op in doc.Operations)
+				{
+					var fn = new WebApiOperationAIFunction(http, op, doc);
+					builder.Services.AddSingleton(_ => ModelContextProtocol.Server.McpServerTool.Create(fn));
+				}
 			}
 			catch
 			{
-				// swallow for now; could add logging
+				// swallow for now
 			}
 
 			return builder;
