@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36603.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyRestAPIMCPServer", "web4-mcp-server\csharp\AnyRestAPIMCPServer.csproj", "{FE53B91E-F2DE-904B-2338-93C8547597FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE53B91E-F2DE-904B-2338-93C8547597FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE53B91E-F2DE-904B-2338-93C8547597FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE53B91E-F2DE-904B-2338-93C8547597FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE53B91E-F2DE-904B-2338-93C8547597FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6EBC8795-735F-4CBD-BF93-CECC7A0EA714}
+	EndGlobalSection
+EndGlobal
