@@ -1,6 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using AnyRestAPIMCPServer.Extentaions;
 
 var builder = Host.CreateApplicationBuilder(args);
 
@@ -11,6 +12,7 @@ builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
 builder.Services
     .AddMcpServer()
     .WithStdioServerTransport()
-    .WithTools<RandomNumberTools>();
+    .WithTools<RandomNumberTools>()
+    .WithWebAPITools("https://localhost:7293/openapi/v1.json");
 
 await builder.Build().RunAsync();
