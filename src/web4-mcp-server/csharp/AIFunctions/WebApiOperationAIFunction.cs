@@ -2,7 +2,7 @@ using AnyRestAPIMCPServer.Models;
 using Microsoft.Extensions.AI;
 using System.Text.Json;
 
-namespace AnyRestAPIMCPServer.AIFunction
+namespace AnyRestAPIMCPServer.AIFunctions
 {
 	internal sealed class WebApiOperationAIFunction : Microsoft.Extensions.AI.AIFunction
 	{

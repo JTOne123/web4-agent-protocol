@@ -1,9 +1,8 @@
-﻿using AnyRestAPIMCPServer.AIFunction;
-using AnyRestAPIMCPServer.Models;
+﻿using AnyRestAPIMCPServer.AIFunctions;
 using Microsoft.Extensions.DependencyInjection;
 using Utils;
 
-namespace AnyRestAPIMCPServer.Extentaions
+namespace AnyRestAPIMCPServer.Extensions
 {
 	internal static class McpServerBuilderExtensions
 	{

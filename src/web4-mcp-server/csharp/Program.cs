@@ -1,7 +1,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using AnyRestAPIMCPServer.Extentaions;
+using AnyRestAPIMCPServer.Extensions;
 
 var builder = Host.CreateApplicationBuilder(args);
 
