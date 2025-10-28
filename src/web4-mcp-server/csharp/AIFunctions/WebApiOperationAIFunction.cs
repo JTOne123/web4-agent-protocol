@@ -1,6 +1,8 @@
 using AnyRestAPIMCPServer.Models;
 using Microsoft.Extensions.AI;
+using System.Buffers.Text;
 using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace AnyRestAPIMCPServer.AIFunctions
 {
@@ -9,24 +11,64 @@ namespace AnyRestAPIMCPServer.AIFunctions
 		private readonly HttpClient httpClient;
 		private readonly OpenApiOperation operation;
 		private readonly OpenApiDocument document;
+
 		private readonly JsonSerializerOptions jsonOptions;
-		private readonly string baseUrl;
+		private readonly JsonElement jsonSchema;
 
 		public WebApiOperationAIFunction(HttpClient httpClient, OpenApiOperation operation, OpenApiDocument document)
 		{
 			this.httpClient = httpClient;
 			this.operation = operation;
 			this.document = document;
-			this.jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
 
-			baseUrl = document.ServerUrl.TrimEnd('/');
+			this.jsonOptions = new JsonSerializerOptions(JsonSerializerDefaults.Web);
+			this.jsonSchema = GenerateOpenAICallSchema(operation);
 		}
+		public override string Name => operation.OperationId;
 
 		public override string Description => operation.Description;
+
+		public override IReadOnlyDictionary<string, object?> AdditionalProperties => base.AdditionalProperties;
+		public override JsonElement JsonSchema => jsonSchema;
+		public override JsonElement? ReturnJsonSchema => base.ReturnJsonSchema;
 
 		public override JsonSerializerOptions JsonSerializerOptions => jsonOptions;
 
 		public override System.Reflection.MethodInfo? UnderlyingMethod => null;
+
+		private static JsonElement GenerateOpenAICallSchema(OpenApiOperation operation)
+		{
+			JsonObject properties = new JsonObject();
+			JsonArray requiredParameters = new JsonArray();
+
+			foreach (var p in operation.Parameters)
+			{
+				if (p.Required)
+				{
+					requiredParameters.Add(p.Name);
+				}
+
+				properties.Add(p.Name, new JsonObject
+				{
+					["type"] = MapType(p.Type),
+					["description"] = p.Description
+				});
+			}
+
+			JsonObject parametersObject = new JsonObject();
+			parametersObject.Add("type", "object");
+			parametersObject.Add("properties", properties);
+
+			if (requiredParameters.Count > 0)
+			{
+				parametersObject.Add("required", requiredParameters);
+			}
+
+			var parametersSchemaString = parametersObject.ToJsonString();
+
+			using var doc = JsonDocument.Parse(parametersSchemaString);
+			return doc.RootElement.Clone();
+		}
 
 		protected override async ValueTask<object?> InvokeCoreAsync(AIFunctionArguments arguments, CancellationToken cancellationToken)
 		{
@@ -42,6 +84,7 @@ namespace AnyRestAPIMCPServer.AIFunctions
 				}
 			}
 
+			var baseUrl = document?.ServerUrl?.TrimEnd('/');
 			var urlBuilder = new System.Text.StringBuilder();
 			urlBuilder.Append(baseUrl);
 			if (!path.StartsWith("/")) urlBuilder.Append('/');
@@ -82,17 +125,7 @@ namespace AnyRestAPIMCPServer.AIFunctions
 			using var response = await httpClient.SendAsync(request, cancellationToken);
 			var content = await response.Content.ReadAsStringAsync(cancellationToken);
 
-			// Try parse JSON
-			try
-			{
-				using var doc = JsonDocument.Parse(content);
-				return doc.RootElement.Clone();
-			}
-			catch
-			{
-				// Fallback raw string
-				return content;
-			}
+			return content;
 		}
 
 		private static string MapType(string openApiType) => openApiType switch

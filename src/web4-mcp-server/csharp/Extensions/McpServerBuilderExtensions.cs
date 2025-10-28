@@ -10,13 +10,13 @@ namespace AnyRestAPIMCPServer.Extensions
 		{
 			try
 			{
-				var http = new HttpClient();
-				var json = http.GetStringAsync(swaggerEndpoint).GetAwaiter().GetResult();
+				var httpClient = new HttpClient();
+				var json = httpClient.GetStringAsync(swaggerEndpoint).GetAwaiter().GetResult();
 				var doc = OpenApiParser.Parse(json);
 
 				foreach (var op in doc.Operations)
 				{
-					var fn = new WebApiOperationAIFunction(http, op, doc);
+					var fn = new WebApiOperationAIFunction(httpClient, op, doc);
 					builder.Services.AddSingleton(_ => ModelContextProtocol.Server.McpServerTool.Create(fn));
 				}
 			}
