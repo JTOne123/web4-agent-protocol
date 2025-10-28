@@ -22,7 +22,7 @@ namespace AnyRestAPIMCPServer.AIFunctions
 			baseUrl = document.ServerUrl.TrimEnd('/');
 		}
 
-		public override string Description => base.Description;
+		public override string Description => operation.Description;
 
 		public override JsonSerializerOptions JsonSerializerOptions => jsonOptions;
 
