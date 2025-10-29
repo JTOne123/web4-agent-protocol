@@ -1,9 +1,9 @@
-using AnyRestAPIMCPServer.Models;
+using Web4AgentProtocol.OpenAPIMCPServer.Models;
 using Microsoft.Extensions.AI;
 using System.Text.Json;
 using System.Text.Json.Nodes;
 
-namespace AnyRestAPIMCPServer.AIFunctions
+namespace Web4AgentProtocol.OpenAPIMCPServer.AIFunctions
 {
 	internal sealed class WebApiOperationAIFunction : Microsoft.Extensions.AI.AIFunction
 	{

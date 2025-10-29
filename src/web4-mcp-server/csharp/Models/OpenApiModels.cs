@@ -1,5 +1,4 @@
-// Simple POCOs used by source generator parsing
-namespace AnyRestAPIMCPServer.Models
+namespace Web4AgentProtocol.OpenAPIMCPServer.Models
 {
 	internal sealed record OpenApiDocument(
 		string? ServerUrl,

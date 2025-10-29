@@ -1,4 +1,4 @@
-using AnyRestAPIMCPServer.Models;
+using Web4AgentProtocol.OpenAPIMCPServer.Models;
 using System.Text.Json;
 
 namespace Utils

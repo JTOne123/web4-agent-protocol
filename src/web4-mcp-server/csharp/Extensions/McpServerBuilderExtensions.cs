@@ -1,8 +1,8 @@
-﻿using AnyRestAPIMCPServer.AIFunctions;
+﻿using Web4AgentProtocol.OpenAPIMCPServer.AIFunctions;
 using Microsoft.Extensions.DependencyInjection;
 using Utils;
 
-namespace AnyRestAPIMCPServer.Extensions
+namespace Web4AgentProtocol.OpenAPIMCPServer.Extensions
 {
 	internal static class McpServerBuilderExtensions
 	{

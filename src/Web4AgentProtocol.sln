@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36603.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnyRestAPIMCPServer", "web4-mcp-server\csharp\AnyRestAPIMCPServer.csproj", "{FE53B91E-F2DE-904B-2338-93C8547597FD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenAPIMCPServer", "web4-mcp-server\csharp\OpenAPIMCPServer.csproj", "{FE53B91E-F2DE-904B-2338-93C8547597FD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

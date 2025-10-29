@@ -36,13 +36,13 @@ To test this MCP server from source code (locally) without using a built MCP ser
 ```json
 {
   "servers": {
-    "web4-agent-protocol.any-rest-api-mcp": {
+    "web4-agent-protocol.openapi-mcp-server": {
       "type": "stdio",
       "command": "dotnet",
       "args": [
         "run",
         "--project",
-        "X:\\Git\\web4-agent-protocol\\src\\web4-mcp-server\\csharp\\AnyRestAPIMCPServer.csproj"
+        "X:\\Git\\web4-agent-protocol\\src\\web4-mcp-server\\csharp\\OpenAPIMCPServer.csproj"
       ]
     }
   }
@@ -70,7 +70,7 @@ For both VS Code and Visual Studio, the configuration file uses the following se
 ```json
 {
   "servers": {
-    "any-rest-api-mcp": {
+    "web4-agent-protocol.openapi-mcp-server": {
       "type": "stdio",
       "command": "dnx",
       "args": [
