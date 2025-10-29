@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "OpenAPIMCPServer": {
+      "commandName": "Project",
+      "commandLineArgs": "https://localhost:7293/openapi/v1.json"
+    }
+  }
+}

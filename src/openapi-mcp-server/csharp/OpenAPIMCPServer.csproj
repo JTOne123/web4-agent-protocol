@@ -24,6 +24,11 @@
     <PackageVersion>0.1.0-beta</PackageVersion>
     <PackageTags>OpenAPI; MCP; server; swagger; stdio</PackageTags>
     <Description>A MCP server for OpenAPI/Swagger.</Description>
+    <Copyright>Pavlo Datsiuk</Copyright>
+    <RepositoryType>git</RepositoryType>
+    <Title>OpenAPI MCP Server</Title>
+    <PackageProjectUrl>https://github.com/JTOne123/web4-agent-protocol</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/JTOne123/web4-agent-protocol</RepositoryUrl>
   </PropertyGroup>
 
   <!-- Include additional files for browsing the MCP server. -->
