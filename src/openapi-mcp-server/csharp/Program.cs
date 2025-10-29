@@ -2,6 +2,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Web4AgentProtocol.OpenAPIMCPServer.Extensions;
+using Web4AgentProtocol.OpenAPIMCPServer.Tools;
 
 var builder = Host.CreateApplicationBuilder(args);
 
