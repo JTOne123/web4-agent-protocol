@@ -2,9 +2,9 @@
 
 This pillar defines the technical foundation that enables the new user-web experience. It introduces the concept of an intelligent gateway (`mcp-server`), which, guided by a standardized definition file (`mcp-api-definition`), provides unified and secure access to any existing REST API. This allows a user's AI Agent to dynamically discover and use the functionality of websites without needing custom integration for each one.
 
-### The `any-rest-api-mcp` Server as an Intelligent Gateway
+### The `openapi-mcp-server` Server as an Intelligent Gateway
 
-The core idea is that Publishers do not need to rewrite their existing business logic. Instead, they deploy an **`any-rest-api-mcp` server** as a smart gateway that sits "in front of" their internal API. This gateway dynamically reads the `mcp-api-definition` file and, based on it, automatically manages routing, request validation, and security.
+The core idea is that Publishers do not need to rewrite their existing business logic. Instead, they deploy an **`openapi-mcp-server` server** as a smart gateway that sits "in front of" their internal API. This gateway dynamically reads the `mcp-api-definition` file and, based on it, automatically manages routing, request validation, and security.
 
 ### The `mcp-api-definition` Discovery File
 

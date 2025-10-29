@@ -12,7 +12,7 @@ The proposed source code is organized into the following structure under the `/s
 │   └── articles/
 ├── src/
 │   ├── web4-mcp-client/      # POC: MCP Client
-│   ├── web4-mcp-server/      # POC: MCP Server
+│   ├── openapi-mcp-server/   # POC: MCP Server
 │   ├── auth-service/         # POC: Authentication Service
 │   ├── smart-contracts/      # POC: Smart Contract Infrastructure
 │   └── definition-files/     # POC: Example Definition Files
@@ -31,7 +31,7 @@ A simple client demonstrating how to discover and interact with a Web4 MCP-enabl
 
 **Location:** `/src/web4-mcp-client/`
 
-## 2. POC: `web4-mcp-server`
+## 2. POC: `openapi-mcp-server`
 
 An example of an intelligent gateway server that sits in front of an existing REST API, making it Web4-compatible.
 
@@ -41,7 +41,7 @@ An example of an intelligent gateway server that sits in front of an existing RE
 - **Auth Validation:** Validates incoming requests and authentication tokens (JWTs).
 - **Payment Verification:** Verifies on-chain payments before proxying requests to the internal API.
 
-**Location:** `/src/web4-mcp-server/`
+**Location:** `/src/openapi-mcp-server/`
 
 ## 3. POC: Authentication Service
 

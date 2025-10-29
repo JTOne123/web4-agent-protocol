@@ -15,5 +15,5 @@ The Web4 Agent Protocol is built on a robust architecture designed for security,
 The ecosystem revolves around three key roles:
 
 - **User:** The end-user who directs their `mcp-client` to perform actions. This client could be an LLM chatbot app (e.g., ChatGPT, Google Gemini), a search engine acting as an AI agent, or a dedicated application like the Claude desktop app.
-- **Publisher:** The website or service owner who deploys an `any-rest-api-mcp` server to expose their functionality.
+- **Publisher:** The website or service owner who deploys an `openapi-mcp-server` server to expose their functionality.
 - **Advertiser:** The entity that funds the user's free access to content in exchange for their verified attention.
