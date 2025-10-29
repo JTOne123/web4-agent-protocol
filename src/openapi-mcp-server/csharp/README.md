@@ -42,7 +42,9 @@ To test this MCP server from source code (locally) without using a built MCP ser
       "args": [
         "run",
         "--project",
-        "X:\\Git\\web4-agent-protocol\\src\\web4-mcp-server\\csharp\\OpenAPIMCPServer.csproj"
+        "X:\\Git\\web4-agent-protocol\\src\\openapi-mcp-server\\csharp\\OpenAPIMCPServer.csproj",
+        "--",
+        "https://localhost:7293/openapi/v1.json"
       ]
     }
   }
@@ -97,4 +99,5 @@ Refer to the VS Code or Visual Studio documentation for more information on conf
 - [Use MCP servers in VS Code (Preview)](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)
 - [Use MCP servers in Visual Studio (Preview)](https://learn.microsoft.com/visualstudio/ide/mcp-servers)
 
+### Test the MCP server by asking a question like:
 What is the weather forecast for New York city?

@@ -1,7 +1,7 @@
 using Web4AgentProtocol.OpenAPIMCPServer.Models;
 using System.Text.Json;
 
-namespace Utils
+namespace Web4AgentProtocol.OpenAPIMCPServer.Utils
 {
     internal static class OpenApiParser
     {

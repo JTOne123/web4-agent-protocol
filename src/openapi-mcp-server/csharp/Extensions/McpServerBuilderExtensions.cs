@@ -1,6 +1,6 @@
-﻿using Web4AgentProtocol.OpenAPIMCPServer.AIFunctions;
-using Microsoft.Extensions.DependencyInjection;
-using Utils;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Web4AgentProtocol.OpenAPIMCPServer.AIFunctions;
+using Web4AgentProtocol.OpenAPIMCPServer.Utils;
 
 namespace Web4AgentProtocol.OpenAPIMCPServer.Extensions
 {
