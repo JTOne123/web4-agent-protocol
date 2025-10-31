@@ -101,3 +101,6 @@ Refer to the VS Code or Visual Studio documentation for more information on conf
 
 ### Test the MCP server by asking a question like:
 What is the weather forecast for New York city?
+
+## Quickstart Blog Post
+https://devblogs.microsoft.com/dotnet/mcp-server-dotnet-nuget-quickstart/
