@@ -86,6 +86,7 @@ For both VS Code and Visual Studio, the configuration file uses the following se
 }
 ```
 
+mcp.json
 ```json
 {
   "servers": {
@@ -104,7 +105,9 @@ For both VS Code and Visual Studio, the configuration file uses the following se
       "type": "stdio",
       "command": "dnx",
       "args": [
-        "web4-agent-protocol.openapi-mcp-server@0.6.0-alpha", 
+        "web4-agent-protocol.openapi-mcp-server",
+        "--version",
+        "0.6.0-alpha", 
         "--yes",
         "--",
         "https://localhost:7293/openapi/v1.json"
