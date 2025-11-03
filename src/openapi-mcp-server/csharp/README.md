@@ -1,106 +1,27 @@
-# MCP Server
+# OpenAPI MCP Server (web4-agent-protocol.openapi-mcp-server)
 
-This README was created using the C# MCP server project template.
-It demonstrates how you can easily create an MCP server using C# and publish it as a NuGet package.
+An open standard for AI agents to act, not just aggregate data. This NuGet package provides an intelligent Model Context Protocol (MCP) gateway that lets any existing REST/OpenAPI service be safely consumed by AI agents (Copilot, ChatGPT, autonomous agent frameworks) without bespoke integration work.
 
-The MCP server is built as a self-contained application and does not require the .NET runtime to be installed on the target machine.
-However, since it is self-contained, it must be built for each target platform separately.
-By default, the template is configured to build for:
-* `win-x64`
-* `win-arm64`
-* `osx-arm64`
-* `linux-x64`
-* `linux-arm64`
-* `linux-musl-x64`
+## Pillar 1: MCP Gateway + Definition File
+The OpenAPI MCP Server runs as a smart gateway (an `openapo-mcp-server`) in front of a Publisher's existing REST API.
+- Endpoint discovery
+- Request/response schema mapping
+- Validation
+- Future monetization / microtransaction rules
 
-If your users require more platforms to be supported, update the list of runtime identifiers in the project's `<RuntimeIdentifiers />` element.
+Publishers do NOT rewrite business logic. They expose (or adapt) an OpenAPI (Swagger) specification enriched with minimal MCP extensions.
 
-See [aka.ms/nuget/mcp/guide](https://aka.ms/nuget/mcp/guide) for the full guide.
+When using `.nupkg` from NuGet, reference it via `dnx` in the client configuration.
 
-Please note that this template is currently in an early preview stage. If you have feedback, please take a [brief survey](http://aka.ms/dotnet-mcp-template-survey).
-
-## Checklist before publishing to NuGet.org
-
-- Test the MCP server locally using the steps below.
-- Update the package metadata in the .csproj file, in particular the `<PackageId>`.
-- Update `.mcp/server.json` to declare your MCP server's inputs.
-  - See [configuring inputs](https://aka.ms/nuget/mcp/guide/configuring-inputs) for more details.
-- Pack the project using `dotnet pack`.
-
-The `bin/Release` directory will contain the package file (.nupkg), which can be [published to NuGet.org](https://learn.microsoft.com/nuget/nuget-org/publish-a-package).
-
-## Developing locally
-
-To test this MCP server from source code (locally) without using a built MCP server package, you can configure your IDE to run the project directly using `dotnet run`.
-
-```json
-{
-  "servers": {
-    "web4-agent-protocol.openapi-mcp-server": {
-      "type": "stdio",
-      "command": "dotnet",
-      "args": [
-        "run",
-        "--project",
-        "X:\\Git\\web4-agent-protocol\\src\\openapi-mcp-server\\csharp\\OpenAPIMCPServer.csproj",
-        "--",
-        "https://localhost:7293/openapi/v1.json"
-      ]
-    }
-  }
-}
-```
-
-## Testing the MCP Server
-
-Once configured, you can ask Copilot Chat for a random number, for example, `Give me 3 random numbers`. It should prompt you to use the `get_random_number` tool on the `any-rest-api-mcp` MCP server and show you the results.
-
-## Publishing to NuGet.org
-
-1. Run `dotnet pack -c Release` to create the NuGet package
-2. Publish to NuGet.org with `dotnet nuget push bin/Release/*.nupkg --api-key <your-api-key> --source https://api.nuget.org/v3/index.json`
-
-## Using the MCP Server from NuGet.org
-
-Once the MCP server package is published to NuGet.org, you can configure it in your preferred IDE. Both VS Code and Visual Studio use the `dnx` command to download and install the MCP server package from NuGet.org.
-
-- **VS Code**: Create a `<WORKSPACE DIRECTORY>/.vscode/mcp.json` file
-- **Visual Studio**: Create a `<SOLUTION DIRECTORY>\.mcp.json` file
-
-For both VS Code and Visual Studio, the configuration file uses the following server definition:
-
+## Configuration Example (Client Side)
 ```json
 {
   "servers": {
     "web4-agent-protocol.openapi-mcp-server": {
       "type": "stdio",
       "command": "dnx",
-      "args": [
-        "<your package ID here>",
-        "--version",
-        "<your package version here>",
-        "--yes"
-      ]
+      "args": ["web4-agent-protocol.openapi-mcp-server", "--version", "<version>", "--yes", "--", "https://localhost:7293/openapi/v1.json"]
     }
   }
 }
 ```
-
-## More information
-
-.NET MCP servers use the [ModelContextProtocol](https://www.nuget.org/packages/ModelContextProtocol) C# SDK. For more information about MCP:
-
-- [Official Documentation](https://modelcontextprotocol.io/)
-- [Protocol Specification](https://spec.modelcontextprotocol.io/)
-- [GitHub Organization](https://github.com/modelcontextprotocol)
-
-Refer to the VS Code or Visual Studio documentation for more information on configuring and using MCP servers:
-
-- [Use MCP servers in VS Code (Preview)](https://code.visualstudio.com/docs/copilot/chat/mcp-servers)
-- [Use MCP servers in Visual Studio (Preview)](https://learn.microsoft.com/visualstudio/ide/mcp-servers)
-
-### Test the MCP server by asking a question like:
-What is the weather forecast for New York city?
-
-## Quickstart Blog Post
-https://devblogs.microsoft.com/dotnet/mcp-server-dotnet-nuget-quickstart/
