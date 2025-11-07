@@ -96,7 +96,7 @@ mcp.json
       "args": [
         "run",
         "--project",
-        "d:\\Git\\web4-agent-protocol\\src\\web4-mcp-server\\csharp\\AnyRestAPIMCPServer.csproj",
+        "D:\\Git\\web4-agent-protocol\\src\\openapi-mcp-server\\csharp\\OpenAPIMCPServer.csproj",
         "--",
         "https://localhost:7293/openapi/v1.json"
       ]
