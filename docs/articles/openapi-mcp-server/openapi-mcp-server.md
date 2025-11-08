@@ -23,8 +23,9 @@ dotnet new mcpserver -n MyMcpServer
 
 ### Defining a Tool
 
+A static method marked with [McpServerTool](https://github.com/modelcontextprotocol/csharp-sdk) becomes an AI-callable MCP “tool”: the attribute plus parameter descriptions expose its name, purpose, and input schema so an LLM client can invoke it (here, to get a random number).
+
 ```csharp
-// Define a tool by marking a static method with [McpServerTool] attribute (assuming such exists in SDK)
 public class MyTools
 {
     internal class RandomNumberTools
@@ -43,10 +44,10 @@ public class MyTools
 
 ### Hosting the Server
 
+This hosting snippet builds a minimal MCP server: create the generic host, register the MCP server with a [stdio transport](https://modelcontextprotocol.io/specification/2025-06-18/basic/transports), add the `RandomNumberTools` tool class, then run the process so an MCP client (LLM) can connect and invoke the tool.
+
 ```csharp
 var builder = Host.CreateApplicationBuilder(args);
-
-builder.Logging.AddConsole(o => o.LogToStandardErrorThreshold = LogLevel.Trace);
 
 builder.Services
     .AddMcpServer()
@@ -277,6 +278,7 @@ You can apply this configuration in VS Code, Visual Studio, or any other MCP-com
 
 ### 3.2 Debugging
 Simply attach to the running process in Visual Studio.
+
 ![Visual Studio Attach to Process](img/image-1.png)
 
 ## 4. Packaging as a .NET NuGet MCP Tool
@@ -300,6 +302,7 @@ dotnet nuget push .\bin\Release\*.nupkg --api-key <YOUR_API_KEY> --source https:
 For internal use only, you can skip NuGet and distribute the built binary or use a private feed.
 
 Here is a link to how the published NuGet looks: [web4-agent-protocol.openapi-mcp-server](https://www.nuget.org/packages/web4-agent-protocol.openapi-mcp-server/).
+
 ![Nuget.org](img/image-5.png)
 
 ## 5. Recap
@@ -316,7 +319,7 @@ By doing this, you enable any LLM-based assistant to interact with your API’s 
 
 The work we’ve done falls under a broader concept we’re exploring called the **Web4 Agent Protocol** – an open standard aimed at letting AI agents not only read the web but also securely perform actions. The OpenAPI-to-MCP bridge is one piece of that vision: it **reuses existing REST APIs** (like a website’s API) by wrapping them in MCP so an agent can book a flight, post a comment, make a purchase, etc., on a user’s behalf. The *Web4 Agent Protocol* project (see [JTOne123/web4-agent-protocol on GitHub](https://github.com/JTOne123/web4-agent-protocol)) is our experimental playground for standardized authentication, authorization, and even **on-chain microtransaction** payment flows—features still in progress. What you have now is a solid foundation: **an OpenAPI-driven MCP server**. Try it with your own APIs—happy coding, and welcome to the future where AI agents can truly act for users!
  
-### 6.1 Why This Matters As LLM Traffic Reroutes the Web
+### 6.1 Why This Matters As LLM Chatbots Reroutes the Web Traffic
 
 We’re already seeing a shift where users ask an LLM chats instead of clicking through individual pages—meaning traditional pageview-driven discovery drops over time. If the only way an assistant can interact with your product is by brittle HTML scraping, you lose precision, performance, and the ability to safely expose richer, stateful flows (login, personalization, payments). By publishing an explicit contract (OpenAPI) and wrapping it with MCP, you teach every capable LLM exactly “what verbs your service speaks.” That unlocks scenarios far beyond passive parsing: authenticated actions, multi-step workflows, metered or microtransaction-backed operations, and auditable capability scoping. In short: less wasted token budget reverse‑engineering your DOM; more intentional, secure, capability-based integration. Opening your API to LLMs early positions your service to remain first‑class in an agent-centric traffic model instead of being an opaque blob the model only half understands.
 
