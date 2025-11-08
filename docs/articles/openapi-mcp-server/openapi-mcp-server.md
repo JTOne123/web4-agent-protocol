@@ -104,24 +104,18 @@ class WebApiOperationAIFunction : AIFunction // Derives from SDK base that defin
 {
     public override string Name => operation.OperationId; // Tool name shown to AI = OpenAPI operationId
     public override string Description => operation.Description; // Human readable description from spec
-    public override JsonElement JsonSchema => jsonSchema; // JSON schema describing the tool's parameters
-    public override JsonElement? ReturnJsonSchema => base.ReturnJsonSchema; // (Optional) return schema (not customized here)
-    public override JsonSerializerOptions JsonSerializerOptions => jsonOptions; // Serializer settings for (de)serialization
-    public override System.Reflection.MethodInfo? UnderlyingMethod => null; // Not backed by a CLR method; it's dynamic HTTP
+    public override JsonElement JsonSchema => GenerateOpenAICallSchema(operation); // JSON schema describing the tool's parameters
+    public override JsonElement? ReturnJsonSchema => base.ReturnJsonSchema; // (Optional) return schema (not customized here for now)
+    
+    // ...
 
     // Builds a JSON schema object for the operation's parameters so the AI knows how to call it.
     private static JsonElement GenerateOpenAICallSchema(OpenApiOperation operation)
     {
-        JsonObject properties = new JsonObject(); // Holds each parameter's schema definition
-        JsonArray requiredParameters = new JsonArray(); // Tracks which parameters are required
+        // ...
 
         foreach (var p in operation.Parameters) // Iterate all parameters defined in OpenAPI
         {
-            if (p.Required) // If spec marks parameter as required
-            {
-                requiredParameters.Add(p.Name); // Add name to required list
-            }
-
             properties.Add(p.Name, new JsonObject // Create schema entry for this parameter
             {
                 ["type"] = MapType(p.Type), // Map OpenAPI type (string/int/etc.) to JSON schema type
@@ -133,14 +127,9 @@ class WebApiOperationAIFunction : AIFunction // Derives from SDK base that defin
         parametersObject.Add("type", "object"); // Parameters are grouped into a single object
         parametersObject.Add("properties", properties); // Assign property schemas
 
-        if (requiredParameters.Count > 0) // Only include required array if non-empty
-        {
-            parametersObject.Add("required", requiredParameters); // Add required parameter names
-        }
+        /// ...
 
-        var parametersSchemaString = parametersObject.ToJsonString(); // Serialize schema to string
-
-        using var doc = JsonDocument.Parse(parametersSchemaString); // Parse back into JsonDocument
+        using var doc = JsonDocument.Parse(parametersObject); // Parse back into JsonDocument
         return doc.RootElement.Clone(); // Return a clone of the root element (safe outside using scope)
     }
 
@@ -149,21 +138,7 @@ class WebApiOperationAIFunction : AIFunction // Derives from SDK base that defin
     {
         var argDict = arguments.ToDictionary(); // Convert argument bag to dictionary for lookups
 
-        // Compose URL path by replacing {pathParam} tokens with encoded argument values.
-        var path = operation.Path; // Base path template from OpenAPI
-        foreach (var p in operation.Parameters.Where(x => x.In == "path")) // Only path parameters
-        {
-            if (argDict.TryGetValue(p.Name, out var v) && v is not null) // If caller provided value
-            {
-                path = path.Replace($"{{{p.Name}}}", Uri.EscapeDataString(v.ToString()!)); // Replace template with encoded value
-            }
-        }
-
-        var baseUrl = document?.ServerUrl?.TrimEnd('/'); // Base server URL (strip trailing slash)
-        var urlBuilder = new System.Text.StringBuilder(); // Efficient string assembly
-        urlBuilder.Append(baseUrl); // Start with base URL
-        if (!path.StartsWith("/")) urlBuilder.Append('/'); // Ensure single slash separator
-        urlBuilder.Append(path); // Append resolved path
+        /// ...
 
         // Build query string from parameters declared as "in: query".
         var queryParams = new List<string>(); // Collect encoded name=value pairs
@@ -173,10 +148,6 @@ class WebApiOperationAIFunction : AIFunction // Derives from SDK base that defin
             {
                 queryParams.Add($"{Uri.EscapeDataString(qp.Name)}={Uri.EscapeDataString(v.ToString()!)}"); // Encode name and value
             }
-        }
-        if (queryParams.Count > 0) // If any query params collected
-        {
-            urlBuilder.Append('?').Append(string.Join('&', queryParams)); // Append ? then join with &
         }
 
         var request = new HttpRequestMessage(new HttpMethod(operation.HttpMethod), urlBuilder.ToString()); // Create HTTP request with verb + full URL
@@ -191,14 +162,7 @@ class WebApiOperationAIFunction : AIFunction // Derives from SDK base that defin
                     bodyParams[bp.Name] = v; // Add to body dictionary
             }
 
-            if (bodyParams.Count > 0) // Only serialize if we have something
-            {
-                request.Content = new StringContent( // Attach JSON payload
-                    JsonSerializer.Serialize(bodyParams, jsonOptions), // Serialize with configured options
-                    System.Text.Encoding.UTF8, // UTF-8 encoding
-                    "application/json" // Content type header
-                );
-            }
+            /// ...
         }
 
         using var response = await httpClient.SendAsync(request, cancellationToken); // Execute HTTP call with cancellation support
