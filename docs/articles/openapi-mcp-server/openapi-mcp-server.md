@@ -1,6 +1,8 @@
 # Building an OpenAPI-Powered MCP Server in C# (Beginner’s Guide)
 
-**Ever wish your AI assistant could directly call your REST API?** By combining an OpenAPI (Swagger) specification with the Model Context Protocol (MCP), you can transform any REST API into a set of AI-accessible tools. In this guide, you’ll build a simple MCP server in C# that automatically exposes operations from an OpenAPI spec (Swagger). It’s aimed at developers comfortable with basic .NET and REST APIs.
+**Ever wish your AI assistant could directly call your REST API?** 
+
+By combining an OpenAPI (Swagger) specification with the Model Context Protocol (MCP), you can transform any REST API into a set of AI-accessible tools. In this guide, you’ll build a simple MCP server in C# that automatically exposes operations from an OpenAPI spec (Swagger). It’s aimed at developers comfortable with basic .NET and REST APIs.
 
 The template scaffolds a minimal MCP server project for you. To understand how it works, we’ll also implement the key parts.
 
@@ -231,30 +233,7 @@ The server does NOT “understand” business logic; it only:
 
 This separation lets you iterate your API independently while the MCP layer auto-adapts via the spec.
 
-## 3. Packaging as a .NET NuGet MCP Tool
-
-Add these properties to your `.csproj`:
-
-```xml
-<PackAsTool>true</PackAsTool>
-<PackageType>McpServer</PackageType>
-<SelfContained>true</SelfContained>
-<PublishSelfContained>true</PublishSelfContained>
-```
-
-Pack and publish:
-
-```powershell
-dotnet pack -c Release
-dotnet nuget push .\bin\Release\*.nupkg --api-key <YOUR_API_KEY> --source https://api.nuget.org/v3/index.json
-```
-
-For internal use only, you can skip NuGet and distribute the built binary or use a private feed.
-
-Here is a link to how the published NuGet looks: [web4-agent-protocol.openapi-mcp-server](https://www.nuget.org/packages/web4-agent-protocol.openapi-mcp-server/).
-![Nuget.org](img/image-5.png)
-
-## 4. Running Locally vs Installed
+## 3. Running Locally vs Installed
 
 Below are two MCP server configurations—one running directly from source code, one via the installed tool:
 
@@ -293,13 +272,35 @@ Local development uses `dotnet`. Installation uses `dnx`.
 
 You can apply this configuration in VS Code, Visual Studio, or any other MCP-compatible LLM client.
 
-### 4.1 An example of what execution looks like
+### 3.1 An example of what execution looks like
 ![VSCode GHC execution](img/image-2.png)
 
-## Debugging
+### 3.2 Debugging
 Simply attach to the running process in Visual Studio.
 ![Visual Studio Attach to Process](img/image-1.png)
-![Console output](img/image.png)
+
+## 4. Packaging as a .NET NuGet MCP Tool
+
+Add these properties to your `.csproj`:
+
+```xml
+<PackAsTool>true</PackAsTool>
+<PackageType>McpServer</PackageType>
+<SelfContained>true</SelfContained>
+<PublishSelfContained>true</PublishSelfContained>
+```
+
+Pack and publish:
+
+```powershell
+dotnet pack -c Release
+dotnet nuget push .\bin\Release\*.nupkg --api-key <YOUR_API_KEY> --source https://api.nuget.org/v3/index.json
+```
+
+For internal use only, you can skip NuGet and distribute the built binary or use a private feed.
+
+Here is a link to how the published NuGet looks: [web4-agent-protocol.openapi-mcp-server](https://www.nuget.org/packages/web4-agent-protocol.openapi-mcp-server/).
+![Nuget.org](img/image-5.png)
 
 ## 5. Recap
 
